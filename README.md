@@ -41,6 +41,30 @@ npm run build
 
 Los archivos se generarán en la carpeta `dist/`
 
+## 🚀 Despliegue
+
+El proyecto incluye configuraciones para diferentes plataformas de hosting:
+
+### Vercel
+El archivo `vercel.json` está configurado para manejar rutas del cliente automáticamente.
+
+### Netlify
+El archivo `netlify.toml` y `public/_redirects` están configurados para redirigir todas las rutas a `index.html`.
+
+### Apache
+El archivo `public/.htaccess` está incluido para servidores Apache. Asegúrate de que `mod_rewrite` esté habilitado.
+
+### Nginx
+Si usas Nginx, añade esta configuración a tu servidor:
+
+```nginx
+location / {
+  try_files $uri $uri/ /index.html;
+}
+```
+
+**Importante**: Sin estas configuraciones, al recargar la página en rutas como `/cv` o `/projects` obtendrás un error 404. Todas las rutas deben redirigirse a `index.html` para que React Router funcione correctamente.
+
 ## 📝 Personalización
 
 ### Colores
