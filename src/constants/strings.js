@@ -102,7 +102,7 @@ export const strings = {
 
   // Footer
   footer: {
-    tagline: "Mi espacio personal en internet",
+    tagline: "Mi trocito de internet",
     madeWith: "Hecho con",
     in: "en"
   },
