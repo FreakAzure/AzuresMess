@@ -6,36 +6,20 @@ import HomePage from './pages/HomePage'
 import CVPage from './pages/CVPage'
 import ProjectsPage from './pages/ProjectsPage'
 import ContactPage from './pages/ContactPage'
+import { generateThumbioUrl } from './utils/thumbio'
 
 function App() {
-  const [projects, setProjects] = useState([
+  const [projects] = useState([
     {
       id: 1,
       title: 'Hedera Watcher',
       description: 'Visualizador de transacciones de la red Hedera en tiempo real. Dashboard interactivo con estadísticas, búsqueda avanzada y soporte multi-red (Mainnet/Testnet).',
       technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Hedera API'],
-      image: 'https://image.thum.io/get/width/800/crop/600/https://hwatch.freakazure.com',
+      image: generateThumbioUrl('https://hwatch.freakazure.com'),
       link: 'https://hwatch.freakazure.com',
       github: 'https://github.com/FreakAzure/HederaWatcher'
-    },
-    {
-      id: 2,
-      title: 'Este Portfolio',
-      description: 'Mi espacio personal en internet, construido con React y Tailwind CSS. Diseño mobile first con dark mode.',
-      technologies: ['React', 'Tailwind CSS', 'Vite', 'JavaScript'],
-      image: 'https://via.placeholder.com/400x300/8b5cf6/ffffff?text=Azure%27s+Mess',
-      link: '#',
-      github: '#'
     }
   ])
-
-  const addProject = (project) => {
-    const newProject = {
-      ...project,
-      id: projects.length + 1
-    }
-    setProjects([...projects, newProject])
-  }
 
   return (
     <Router>
