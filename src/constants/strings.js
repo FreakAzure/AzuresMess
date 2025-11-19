@@ -19,8 +19,8 @@ export const strings = {
 
   // Hero / Homepage
   hero: {
-    welcome: "Bienvenida a mi espacio",
-    title: "Desarrolladora e Innovadora",
+    welcome: "Bienvenid@ a mi espacio",
+    title: "Desarrollo y otros shenanigans",
     subtitle: "Mobile & Backend Full Stack Developer",
     description: "Desarrolladora apasionada por la tecnología emergente. Especializada en desarrollo mobile, backend y blockchain. Construyendo el futuro, un proyecto a la vez.",
     about: {
@@ -134,7 +134,7 @@ export const experience = [
     description: 'Fundadora y ex-CTO de Whatalab, liderando el desarrollo de soluciones tecnológicas innovadoras. Especializada en desarrollo mobile nativo (Android/iOS) y tecnologías emergentes. Dirigí proyectos relacionados con robótica humanoides y arquitecturas blockchain descentralizadas. Responsable de la estrategia técnica, arquitectura de sistemas y liderazgo de equipos de desarrollo.'
   },
   {
-    title: 'Director de Proyecto & Backend',
+    title: 'Directora de Proyecto & Backend',
     company: '4Pets',
     period: 'Nov 2024 - Presente',
     location: 'España · Remoto',
@@ -142,7 +142,7 @@ export const experience = [
     description: 'Director de proyecto y arquitectura backend especializada en tecnología blockchain del ecosistema Hedera. Diseñando e implementando soluciones descentralizadas que transforman la interacción con tecnología. Gestionando equipos técnicos, definiendo arquitecturas escalables y asegurando la calidad del código en proyectos críticos de blockchain.'
   },
   {
-    title: 'Ingeniero de Software',
+    title: 'Ingeniera de Software',
     company: 'FENIXMOCA',
     period: 'Nov 2024 - Presente',
     location: 'España · Remoto',
@@ -150,7 +150,7 @@ export const experience = [
     description: 'Desarrollo de software y soluciones tecnológicas en modalidad remota. Especializada en arquitecturas backend escalables, APIs RESTful y microservicios. Implementando mejores prácticas de desarrollo, testing automatizado y CI/CD para garantizar la calidad y entrega continua de software.'
   },
   {
-    title: 'Ingeniero de Software',
+    title: 'Ingeniera de Software',
     company: 'Renta 4',
     period: 'Mar 2024 - Nov 2024',
     location: 'Madrid, España · Híbrido',
@@ -158,7 +158,7 @@ export const experience = [
     description: 'Desarrollo de aplicaciones móviles Android nativas para el sector financiero. Trabajando en modalidad híbrida desarrollando soluciones fintech innovadoras que mejoran la experiencia del usuario. Implementando arquitecturas MVVM, integración con APIs REST, y optimización de rendimiento para aplicaciones críticas en producción.'
   },
   {
-    title: 'Ingeniero de Software aplicado a Soluciones Blockchain',
+    title: 'Ingeniera de Software aplicado a Soluciones Blockchain',
     company: 'EY',
     period: 'Sept 2022 - Mar 2024',
     location: 'Madrid, España',
@@ -166,7 +166,7 @@ export const experience = [
     description: 'Desarrollo de soluciones blockchain empresariales utilizando NestJS, TypeScript y frameworks modernos. Diseñando arquitecturas descentralizadas, smart contracts y sistemas de consenso. Trabajando en proyectos innovadores dentro del ecosistema blockchain, colaborando con equipos multidisciplinarios para entregar soluciones escalables y seguras.'
   },
   {
-    title: 'Desarrollador de Aplicaciones para Móviles',
+    title: 'Desarrolladora de Aplicaciones para Móviles',
     company: 'Bitnovo',
     period: 'Nov 2021 - Sept 2022',
     location: 'Madrid, España',
@@ -174,7 +174,7 @@ export const experience = [
     description: 'Desarrollo de la aplicación móvil principal de Bitnovo, plataforma líder en criptomonedas. Implementación de funcionalidades críticas de trading, gestión de wallets y seguridad. Trabajando con Git, SQL, arquitecturas móviles nativas y APIs REST para crear soluciones fintech robustas y seguras.'
   },
   {
-    title: 'Desarrollador de iOS',
+    title: 'Desarrolladora de iOS',
     company: 'CGI Umanis',
     period: 'Abr 2021 - Nov 2021',
     location: 'España',
