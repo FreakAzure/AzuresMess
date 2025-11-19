@@ -38,7 +38,7 @@ function App() {
             <Route path="/cv" element={<CVPage />} />
             <Route 
               path="/projects" 
-              element={<ProjectsPage projects={projects} onAddProject={addProject} />} 
+              element={<ProjectsPage projects={projects} />} 
             />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>

@@ -1,9 +1,9 @@
 import Projects from '../components/Projects'
 
-const ProjectsPage = ({ projects, onAddProject }) => {
+const ProjectsPage = ({ projects }) => {
   return (
     <div className="min-h-screen pt-20">
-      <Projects projects={projects} onAddProject={onAddProject} />
+      <Projects projects={projects} />
     </div>
   )
 }
