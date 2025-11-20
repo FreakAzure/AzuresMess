@@ -1,7 +1,7 @@
 export const strings = {
   // General
   siteName: "Azure's Mess",
-  name: "Azure",
+  name: "Elisabeth",
   title: "Desarrolladora e Innovadora",
   realName: "Elisabeth",
   cvTitle: "Mobile & Backend Full Stack Developer",
