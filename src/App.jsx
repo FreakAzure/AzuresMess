@@ -17,7 +17,7 @@ function App() {
       technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Hedera SDK', 'CoinGecko API', 'Sentx API'],
       image: generateThumbioUrl('https://wanalyzer.freakazure.com'),
       link: 'https://wanalyzer.freakazure.com',
-      github: 'https://github.com/FreakAzure/HederaWalletAnalyzer'
+      github: 'https://github.com/FreakAzure/WalletAnalyzer'
     },
     {
       id: 2,
