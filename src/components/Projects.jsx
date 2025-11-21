@@ -1,4 +1,4 @@
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
+import { FaExternalLinkAlt } from 'react-icons/fa'
 import { strings } from '../constants/strings'
 
 const Projects = ({ projects }) => {
@@ -40,8 +40,8 @@ const Projects = ({ projects }) => {
                     </span>
                   ))}
                 </div>
-                <div className="flex gap-4">
-                  {project.link && (
+                {project.link && (
+                  <div className="flex gap-4">
                     <a
                       href={project.link}
                       target="_blank"
@@ -50,18 +50,8 @@ const Projects = ({ projects }) => {
                     >
                       <FaExternalLinkAlt /> {strings.projects.links.viewProject}
                     </a>
-                  )}
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-400 hover:text-accent-blue transition-colors"
-                    >
-                      <FaGithub /> {strings.projects.links.code}
-                    </a>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
             </div>
           ))}
