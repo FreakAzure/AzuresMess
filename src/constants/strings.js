@@ -95,7 +95,8 @@ export const strings = {
       experience: "Experiencia",
       education: "Educación",
       skills: "Habilidades",
-      languages: "Idiomas"
+      languages: "Idiomas",
+      portfolio: "Portfolio"
     },
     downloadAlert: "Función de descarga de CV - Puedes agregar tu archivo PDF aquí"
   },
@@ -111,7 +112,8 @@ export const strings = {
   links: {
     github: "https://github.com/FreakAzure",
     linkedin: "https://www.linkedin.com/in/azurescodeexperience/",
-    email: "mailto:eli@freakazure.com"
+    email: "mailto:eli@freakazure.com",
+    portfolio: "https://freakazure.com"
   }
 }
 

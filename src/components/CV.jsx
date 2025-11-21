@@ -1,4 +1,4 @@
-import { FaDownload, FaBriefcase, FaGraduationCap, FaCode, FaLanguage } from 'react-icons/fa'
+import { FaDownload, FaBriefcase, FaGraduationCap, FaCode, FaLanguage, FaGlobe } from 'react-icons/fa'
 import { strings, experience, education, skills, languages } from '../constants/strings'
 import { generateCVPDF } from '../utils/generatePDF'
 
@@ -102,7 +102,7 @@ const CV = () => {
           </div>
 
           {/* Idiomas */}
-          <div>
+          <div className="mb-12">
             <div className="flex items-center gap-3 mb-6">
               <FaLanguage className="text-accent-purple text-2xl" />
               <h3 className="text-2xl font-bold text-white">{strings.cv.sections.languages}</h3>
@@ -119,6 +119,25 @@ const CV = () => {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+
+          {/* Portfolio */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <FaGlobe className="text-accent-blue text-2xl" />
+              <h3 className="text-2xl font-bold text-white">{strings.cv.sections.portfolio}</h3>
+            </div>
+            <div className="bg-dark-card p-6 rounded-lg border-[0.5px] border-gray-900/50 hover:border-accent-blue/70 transition-all duration-300 hover:glow-blue group">
+              <a
+                href={strings.links.portfolio}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-accent-blue hover:text-accent-purple transition-colors duration-300"
+              >
+                <FaGlobe className="text-xl" />
+                <span className="text-lg font-medium">{strings.links.portfolio}</span>
+              </a>
             </div>
           </div>
         </div>

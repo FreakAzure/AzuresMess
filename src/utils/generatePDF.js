@@ -479,6 +479,40 @@ export const generateCVPDF = () => {
   const languagesRows = Math.ceil(languages.length / 2)
   yPosition = languageStartY + (languagesRows * (languageItemHeight + languageSpacing)) + 5
 
+  // Portfolio
+  if (yPosition > pageHeight - 40) {
+    doc.addPage()
+    setDarkBackground()
+    yPosition = margin + 10
+  }
+
+  addText(strings.cv.sections.portfolio, margin, yPosition, {
+    fontSize: 20,
+    color: textLight,
+    font: 'helvetica',
+    style: 'bold'
+  })
+  yPosition += 8
+
+  const portfolioCardHeight = 15
+  const portfolioCard = drawCard(margin, yPosition, contentWidth, portfolioCardHeight, 5)
+  
+  // Icono de globo (simulado con círculo)
+  doc.setFillColor(accentBlue[0], accentBlue[1], accentBlue[2])
+  doc.circle(portfolioCard.x + 3, portfolioCard.y + 5, 2, 'F')
+  
+  // URL del portfolio
+  addText(strings.links.portfolio, portfolioCard.x + 8, portfolioCard.y + 5, {
+    fontSize: 12,
+    color: accentBlue,
+    font: 'helvetica',
+    style: 'normal',
+    maxWidth: portfolioCard.width - 8,
+    lineHeight: 0.35
+  })
+
+  yPosition += portfolioCardHeight + 10
+
   // Footer en cada página con estilo dark
   const totalPages = doc.internal.pages.length - 1
   for (let i = 1; i <= totalPages; i++) {
