@@ -1,7 +1,8 @@
 import jsPDF from 'jspdf'
-import { strings, experience, education, skills, languages } from '../constants/strings'
+import { translations } from '../i18n/translations'
 
-export const generateCVPDF = () => {
+export const generateCVPDF = (language = 'es') => {
+  const t = translations[language] || translations.es
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
@@ -127,28 +128,28 @@ export const generateCVPDF = () => {
     doc.rect(x, 0, actualWidth, headerHeight, 'F')
   }
   
-  yPosition = 18
-  addText(strings.realName, margin, yPosition, {
-    fontSize: 26,
-    color: textLight,
-    font: 'helvetica',
-    style: 'bold'
-  })
-  
-  yPosition = 26
-  addText(strings.cvTitle, margin, yPosition, {
-    fontSize: 13,
-    color: textLight,
-    font: 'helvetica',
-    style: 'normal'
-  })
+              yPosition = 18
+              addText(t.realName, margin, yPosition, {
+                fontSize: 26,
+                color: textLight,
+                font: 'helvetica',
+                style: 'bold'
+              })
+              
+              yPosition = 26
+              addText(t.cvTitle, margin, yPosition, {
+                fontSize: 13,
+                color: textLight,
+                font: 'helvetica',
+                style: 'normal'
+              })
 
-  // Información de contacto en el header (lado derecho)
-  const contactInfo = [
-    strings.links.email.replace('mailto:', ''),
-    strings.links.linkedin,
-    strings.links.github
-  ]
+              // Información de contacto en el header (lado derecho)
+              const contactInfo = [
+                'eli@freakazure.com',
+                'linkedin.com/in/azurescodeexperience',
+                'github.com/FreakAzure'
+              ]
   
   let contactY = 20
   contactInfo.forEach((info) => {
@@ -164,16 +165,16 @@ export const generateCVPDF = () => {
 
   yPosition = headerHeight + 10
 
-  // Experiencia
-  addText(strings.cv.sections.experience, margin, yPosition, {
-    fontSize: 20,
-    color: textLight,
-    font: 'helvetica',
-    style: 'bold'
-  })
-  yPosition += 8
+              // Experiencia
+              addText(t.cv.sections.experience, margin, yPosition, {
+                fontSize: 20,
+                color: textLight,
+                font: 'helvetica',
+                style: 'bold'
+              })
+              yPosition += 8
 
-  experience.forEach((exp, index) => {
+              t.cvData.experience.forEach((exp, index) => {
     if (yPosition > pageHeight - 50) {
       doc.addPage()
       setDarkBackground()
@@ -288,16 +289,16 @@ export const generateCVPDF = () => {
   setDarkBackground()
   yPosition = margin
 
-  // Educación
-  addText(strings.cv.sections.education, margin, yPosition, {
-    fontSize: 20,
-    color: textLight,
-    font: 'helvetica',
-    style: 'bold'
-  })
-  yPosition += 8
+              // Educación
+              addText(t.cv.sections.education, margin, yPosition, {
+                fontSize: 20,
+                color: textLight,
+                font: 'helvetica',
+                style: 'bold'
+              })
+              yPosition += 8
 
-  education.forEach((edu) => {
+              t.cvData.education.forEach((edu) => {
     const padding = 5
     const contentAreaWidth = contentWidth - (padding * 2)
     const eduDescLines = edu.description ? doc.splitTextToSize(edu.description, contentAreaWidth) : []
@@ -353,27 +354,27 @@ export const generateCVPDF = () => {
 
   yPosition += 3
 
-  // Habilidades
-  addText(strings.cv.sections.skills, margin, yPosition, {
-    fontSize: 20,
-    color: textLight,
-    font: 'helvetica',
-    style: 'bold'
-  })
-  yPosition += 8
+              // Habilidades
+              addText(t.cv.sections.skills, margin, yPosition, {
+                fontSize: 20,
+                color: textLight,
+                font: 'helvetica',
+                style: 'bold'
+              })
+              yPosition += 8
 
-  // Organizar habilidades en una cuadrícula (3 columnas)
-  const skillsPerRow = 3
-  const skillItemHeight = 8
-  const skillItemWidth = (contentWidth - 10) / skillsPerRow
-  const skillSpacing = 5
+              // Organizar habilidades en una cuadrícula (3 columnas)
+              const skillsPerRow = 3
+              const skillItemHeight = 8
+              const skillItemWidth = (contentWidth - 10) / skillsPerRow
+              const skillSpacing = 5
 
-  let currentRow = 0
-  let currentCol = 0
+              let currentRow = 0
+              let currentCol = 0
 
-  let startY = yPosition
-  
-  skills.forEach((skill, index) => {
+              let startY = yPosition
+              
+              t.cvData.skills.forEach((skill, index) => {
     // Verificar si necesitamos una nueva página
     const skillY = startY + (currentRow * (skillItemHeight + skillSpacing))
     if (skillY + skillItemHeight > pageHeight - 40) {
@@ -415,28 +416,28 @@ export const generateCVPDF = () => {
   const finalSkillY = startY + (currentRow * (skillItemHeight + skillSpacing))
   yPosition = finalSkillY + skillItemHeight + 10 // Aumentar margen de 5 a 10
 
-  // Idiomas
-  if (yPosition > pageHeight - 40) {
-    doc.addPage()
-    setDarkBackground()
-    yPosition = margin + 10
-  }
+              // Idiomas
+              if (yPosition > pageHeight - 40) {
+                doc.addPage()
+                setDarkBackground()
+                yPosition = margin + 10
+              }
 
-  addText(strings.cv.sections.languages, margin, yPosition, {
-    fontSize: 20,
-    color: textLight,
-    font: 'helvetica',
-    style: 'bold'
-  })
-  yPosition += 8
+              addText(t.cv.sections.languages, margin, yPosition, {
+                fontSize: 20,
+                color: textLight,
+                font: 'helvetica',
+                style: 'bold'
+              })
+              yPosition += 8
 
-  // Mostrar idiomas en una cuadrícula de 2 columnas
-  const languageItemWidth = (contentWidth - 5) / 2
-  const languageItemHeight = 10
-  const languageSpacing = 5
-  let languageStartY = yPosition
+              // Mostrar idiomas en una cuadrícula de 2 columnas
+              const languageItemWidth = (contentWidth - 5) / 2
+              const languageItemHeight = 10
+              const languageSpacing = 5
+              let languageStartY = yPosition
 
-  languages.forEach((language, index) => {
+              t.cvData.languages.forEach((language, index) => {
     const row = Math.floor(index / 2)
     const col = index % 2
     const languageY = languageStartY + (row * (languageItemHeight + languageSpacing))
@@ -476,45 +477,14 @@ export const generateCVPDF = () => {
   })
 
   // Actualizar yPosition después de los idiomas
-  const languagesRows = Math.ceil(languages.length / 2)
+  const languagesRows = Math.ceil(t.cvData.languages.length / 2)
   yPosition = languageStartY + (languagesRows * (languageItemHeight + languageSpacing)) + 5
-
-  // Portfolio
-  if (yPosition > pageHeight - 40) {
-    doc.addPage()
-    setDarkBackground()
-    yPosition = margin + 10
-  }
-
-  addText(strings.cv.sections.portfolio, margin, yPosition, {
-    fontSize: 20,
-    color: textLight,
-    font: 'helvetica',
-    style: 'bold'
-  })
-  yPosition += 8
-
-  const portfolioCardHeight = 15
-  const portfolioCard = drawCard(margin, yPosition, contentWidth, portfolioCardHeight, 5)
-  
-  // Icono de globo (simulado con círculo)
-  doc.setFillColor(accentBlue[0], accentBlue[1], accentBlue[2])
-  doc.circle(portfolioCard.x + 3, portfolioCard.y + 5, 2, 'F')
-  
-  // URL del portfolio
-  addText(strings.links.portfolio, portfolioCard.x + 8, portfolioCard.y + 5, {
-    fontSize: 12,
-    color: accentBlue,
-    font: 'helvetica',
-    style: 'normal',
-    maxWidth: portfolioCard.width - 8,
-    lineHeight: 0.35
-  })
-
-  yPosition += portfolioCardHeight + 10
 
   // Footer en cada página con estilo dark
   const totalPages = doc.internal.pages.length - 1
+  const pageText = language === 'es' ? 'Página' : 'Page'
+  const ofText = language === 'es' ? 'de' : 'of'
+  
   for (let i = 1; i <= totalPages; i++) {
     doc.setPage(i)
     
@@ -526,14 +496,14 @@ export const generateCVPDF = () => {
     doc.setFontSize(8)
     doc.setTextColor(textGrayDark[0], textGrayDark[1], textGrayDark[2])
     doc.text(
-      `${strings.siteName} · ${strings.links.email.replace('mailto:', '')}`,
+      `${t.siteName} · eli@freakazure.com`,
       pageWidth / 2,
       pageHeight - 8,
       { align: 'center' }
     )
     doc.setTextColor(textGrayDark[0], textGrayDark[1], textGrayDark[2], 0.6)
     doc.text(
-      `Página ${i} de ${totalPages}`,
+      `${pageText} ${i} ${ofText} ${totalPages}`,
       pageWidth / 2,
       pageHeight - 3,
       { align: 'center' }
@@ -541,6 +511,6 @@ export const generateCVPDF = () => {
   }
 
   // Guardar el PDF
-  doc.save(`CV_${strings.name}_${new Date().getFullYear()}.pdf`)
+  doc.save(`CV_${t.name}_${new Date().getFullYear()}.pdf`)
 }
 

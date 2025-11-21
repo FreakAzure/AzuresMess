@@ -1,10 +1,12 @@
 import { FaDownload, FaBriefcase, FaGraduationCap, FaCode, FaLanguage } from 'react-icons/fa'
-import { strings, experience, education, skills, languages } from '../constants/strings'
+import { useLanguage } from '../contexts/LanguageContext'
 import { generateCVPDF } from '../utils/generatePDF'
 
 const CVPage = () => {
+  const { t, language } = useLanguage()
+  
   const handleDownload = () => {
-    generateCVPDF()
+    generateCVPDF(language)
   }
 
   return (
@@ -12,16 +14,16 @@ const CVPage = () => {
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {strings.cv.title.split(' ')[0]} <span className="gradient-text">{strings.cv.title.split(' ')[1]}</span>
+            {t.cv.title.split(' ')[0]} <span className="gradient-text">{t.cv.title.split(' ')[1]}</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto mb-6">
-            {strings.cv.subtitle}
+            {t.cv.subtitle}
           </p>
           <button
             onClick={handleDownload}
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent-blue via-accent-purple to-accent-pink rounded-lg font-semibold hover:shadow-lg hover:shadow-accent-blue/50 transition-all duration-300 glow-blue hover:glow-purple"
           >
-            <FaDownload /> {strings.cv.downloadButton}
+            <FaDownload /> {t.cv.downloadButton}
           </button>
         </div>
 
@@ -30,10 +32,10 @@ const CVPage = () => {
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-6">
               <FaBriefcase className="text-accent-blue text-2xl" />
-              <h3 className="text-2xl font-bold text-white">{strings.cv.sections.experience}</h3>
+              <h3 className="text-2xl font-bold text-white">{t.cv.sections.experience}</h3>
             </div>
             <div className="space-y-6">
-              {experience.map((exp, index) => (
+              {t.cvData.experience.map((exp, index) => (
                 <div
                   key={index}
                   className="bg-dark-card p-6 rounded-lg border-[0.5px] border-gray-900/50 hover:border-accent-blue/70 transition-all duration-300 hover:glow-blue group"
@@ -63,10 +65,10 @@ const CVPage = () => {
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-6">
               <FaGraduationCap className="text-accent-purple text-2xl" />
-              <h3 className="text-2xl font-bold text-white">{strings.cv.sections.education}</h3>
+              <h3 className="text-2xl font-bold text-white">{t.cv.sections.education}</h3>
             </div>
             <div className="space-y-4">
-              {education.map((edu, index) => (
+              {t.cvData.education.map((edu, index) => (
                 <div
                   key={index}
                   className="bg-dark-card p-6 rounded-lg border-[0.5px] border-gray-900/50 hover:border-accent-purple/50 transition-all duration-300"
@@ -84,11 +86,11 @@ const CVPage = () => {
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-6">
               <FaCode className="text-accent-blue text-2xl" />
-              <h3 className="text-2xl font-bold text-white">{strings.cv.sections.skills}</h3>
+              <h3 className="text-2xl font-bold text-white">{t.cv.sections.skills}</h3>
             </div>
             <div className="bg-dark-card p-6 rounded-lg border-[0.5px] border-gray-900/50">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {skills.map((skill, index) => (
+                {t.cvData.skills.map((skill, index) => (
                   <div
                     key={index}
                     className="flex items-center gap-2 px-4 py-2 rounded-lg bg-dark-surface border-[0.5px] border-gray-900/50 hover:border-accent-blue/50 transition-all duration-300 group"
@@ -105,11 +107,11 @@ const CVPage = () => {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <FaLanguage className="text-accent-purple text-2xl" />
-              <h3 className="text-2xl font-bold text-white">{strings.cv.sections.languages}</h3>
+              <h3 className="text-2xl font-bold text-white">{t.cv.sections.languages}</h3>
             </div>
             <div className="bg-dark-card p-6 rounded-lg border-[0.5px] border-gray-900/50">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {languages.map((language, index) => (
+                {t.cvData.languages.map((language, index) => (
                   <div
                     key={index}
                     className="flex items-center justify-between px-4 py-3 rounded-lg bg-dark-surface border-[0.5px] border-gray-900/50 hover:border-accent-purple/50 transition-all duration-300 group"

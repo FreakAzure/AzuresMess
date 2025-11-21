@@ -1,16 +1,17 @@
 import { FaExternalLinkAlt } from 'react-icons/fa'
-import { strings } from '../constants/strings'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Projects = ({ projects }) => {
+  const { t } = useLanguage()
   return (
     <section className="py-20 px-4">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {strings.projects.title.split(' ')[0]} <span className="gradient-text">{strings.projects.title.split(' ')[1]}</span>
+            {t.projects.title.split(' ')[0]} <span className="gradient-text">{t.projects.title.split(' ')[1]}</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            {strings.projects.subtitle}
+            {t.projects.subtitle}
           </p>
         </div>
 
@@ -48,7 +49,7 @@ const Projects = ({ projects }) => {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-accent-blue hover:text-accent-blue-light transition-colors"
                     >
-                      <FaExternalLinkAlt /> {strings.projects.links.viewProject}
+                      <FaExternalLinkAlt /> {t.projects.links.viewProject}
                     </a>
                   </div>
                 )}

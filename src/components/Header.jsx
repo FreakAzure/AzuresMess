@@ -1,18 +1,12 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { FaBars, FaTimes } from 'react-icons/fa'
-import { strings } from '../constants/strings'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
-
-  const menuItems = [
-    { name: 'Inicio', path: '/' },
-    { name: 'Proyectos', path: '/projects' },
-    { name: 'CV', path: '/cv' },
-    { name: 'Contacto', path: '/contact' }
-  ]
+  const { t, language, toggleLanguage } = useLanguage()
 
   const isActive = (path) => location.pathname === path
 
@@ -21,40 +15,51 @@ const Header = () => {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-2xl font-bold gradient-text">
-            {strings.siteName}
+            {t.siteName}
           </Link>
           
-          {/* Desktop Menu */}
-          <ul className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item) => (
-              <li key={item.name}>
-                <Link
-                  to={item.path}
-                  className={`text-gray-300 hover:text-accent-blue transition-colors duration-200 ${
-                    isActive(item.path) ? 'text-accent-blue' : ''
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="flex items-center gap-6">
+            {/* Desktop Menu */}
+            <ul className="hidden md:flex items-center space-x-8">
+              {t.header.menuItems.map((item) => (
+                <li key={item.path}>
+                  <Link
+                    to={item.path}
+                    className={`text-gray-300 hover:text-accent-blue transition-colors duration-200 ${
+                      isActive(item.path) ? 'text-accent-blue' : ''
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-gray-300 hover:text-accent-blue transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={strings.header.menuToggle}
-          >
-            {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-          </button>
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-gray-700 hover:border-accent-blue transition-colors duration-200 text-gray-300 hover:text-accent-blue"
+              aria-label="Toggle language"
+            >
+              <span className="text-sm font-medium">{language === 'es' ? 'ES' : 'EN'}</span>
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden text-gray-300 hover:text-accent-blue transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={t.header.menuToggle}
+            >
+              {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
           <ul className="md:hidden mt-4 space-y-4 pb-4">
-            {menuItems.map((item) => (
-              <li key={item.name}>
+            {t.header.menuItems.map((item) => (
+              <li key={item.path}>
                 <Link
                   to={item.path}
                   className={`block text-gray-300 hover:text-accent-blue transition-colors duration-200 ${
@@ -66,6 +71,17 @@ const Header = () => {
                 </Link>
               </li>
             ))}
+            <li>
+              <button
+                onClick={() => {
+                  toggleLanguage()
+                  setIsMenuOpen(false)
+                }}
+                className="block w-full text-left text-gray-300 hover:text-accent-blue transition-colors duration-200 px-4 py-2 rounded-lg border border-gray-700 hover:border-accent-blue"
+              >
+                {language === 'es' ? 'English' : 'Español'}
+              </button>
+            </li>
           </ul>
         )}
       </nav>
