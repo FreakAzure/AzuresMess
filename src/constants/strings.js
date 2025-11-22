@@ -120,14 +120,6 @@ export const strings = {
 // Datos del CV - Experiencia
 export const experience = [
   {
-    title: 'Desarrolladora Freelance',
-    company: 'Independiente',
-    period: 'Nov 2024 - Presente',
-    location: 'España · Remoto',
-    type: 'Profesional independiente',
-    description: 'Desarrolladora freelance especializada en desarrollo mobile nativo (Android/iOS), backend escalable y soluciones blockchain. Trabajando en proyectos diversos para diferentes clientes, desde startups hasta empresas establecidas. Ofreciendo servicios de desarrollo full stack, arquitectura de software y consultoría técnica.'
-  },
-  {
     title: 'Founder & Ex-CTO',
     company: 'Whatalab',
     period: 'Mar 2024 - Nov 2024',
